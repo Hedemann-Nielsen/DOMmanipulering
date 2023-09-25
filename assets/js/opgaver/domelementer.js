@@ -8,7 +8,11 @@ Du skal finde elementet med id="yellowFigure" og console logge det.
 */
 
 // din kode her
+let redFigure = document.getElementById("redFigure");
+console.log('redFigure');
 
+let yellowFigure = document.getElementById("yellowFigure");
+console.log('yellowFigure');
 
 /* opgave 1.2
 Du skal ændre baggrundsfarve på de to elementer du har fundet i opgave 1.1
@@ -16,7 +20,8 @@ farven på elementerne skal være blå. brug evt. elelement.style.backgroundColo
 */
 
 
-// din kode her
+redFigure.style.backgroundColor = 'blue';
+yellowFigure.style.backgroundColor = 'blue';
 
 
 
@@ -26,9 +31,13 @@ Du skal oprette følgende HTML elementer i Elementet med id opgaveTwo.
 - et p med teksten: Jeg har løst opgave 2.1
 */
 
-
 // din kode her
+let newH2 = document.createElement('h2');
 
+newH2.innerText ='jeg har løst opgave 2.1';
+
+const myDomElement = document.getElementById('opgaveTwo');
+            myDomElement.appendChild(newH2);
 
 // opgave 3 liveHTML lists
 /* opgave 3.1
@@ -36,7 +45,8 @@ Du skal finde alle elementer med klassen purpleFigures og console logge resultat
 */
 
 // din kode her
-
+let allPurpleFigures = document.getElementsByClassName("purpleFigures");
+console.log(allPurpleFigures);
 
 /* opgave 3.2
 Du skal finde alle elementer med klassen purpleFigures og bruge array.from() til at konvertere listen
@@ -45,6 +55,13 @@ array.from beskrivelse HER: https://developer.mozilla.org/en-US/docs/Web/JavaScr
 */
 
 // din kode her
+// Find alle elementer med klassen "purpleFigures" og konverter listen til et array
+var purpleFigures = Array.from(document.getElementsByClassName('purpleFigures'));
+
+// Brug map-funktionen til at ændre baggrundsfarven til rød på hvert element
+purpleFigures.map(function(element) {
+  element.style.backgroundColor = 'red';
+});
 
 
 /* opgave 3.3
@@ -54,8 +71,9 @@ myElement.children[0].innerHTML til at ændre 1. child elements inner html.
 
 
 // din kode her
-
-
+purpleFigures.map(function(element) {
+    element.children[0].innerHTML = 'RED';
+  });
 
 /* opgave 4
 opret DOM elementer i elementet med id opgaveFour, udfra data objectet myData.
@@ -71,6 +89,25 @@ const myData = {
 
 
 // din kode her
+
+
+const opgaveFourElement = document.getElementById('opgaveFour');
+const articleElement = document.createElement('article');
+const overskrift = document.createElement('h2');
+const billede = document.createElement('img');
+const beskrivelse = document.createElement('p');
+
+overskrift.textContent = myData.name; 
+billede.src = myData.image; 
+beskrivelse.textContent = myData.description;
+
+articleElement.appendChild(overskrift);
+articleElement.appendChild(billede);
+articleElement.appendChild(beskrivelse);
+
+billede.style.width = '100%';
+
+opgaveFourElement.appendChild(articleElement);
 
 
 
